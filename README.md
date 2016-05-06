@@ -1,6 +1,6 @@
 [![npm package](https://img.shields.io/npm/v/react-dropdown-input.svg?style=flat-square)](https://www.npmjs.org/package/react-dropdown-input)
 
-[![Travic CI]](https://travis-ci.org/aaron7pm/react-bootstrap-dropdown.svg)
+[![Travis CI](https://travis-ci.org/aaron7pm/react-bootstrap-dropdown.svg)](https://travis-ci.org/aaron7pm/react-bootstrap-dropdown)
 
 React-Bootstrap-Dropdown
 ====================
