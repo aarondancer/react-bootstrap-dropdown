@@ -1,14 +1,16 @@
 [![npm package](https://img.shields.io/npm/v/react-dropdown-input.svg?style=flat-square)](https://www.npmjs.org/package/react-dropdown-input)
 
+[![Travic CI]](https://travis-ci.org/aaron7pm/react-bootstrap-dropdown.svg)
+
 React-Bootstrap-Dropdown
 ====================
 
-React-dropdown-input displays a "combobox" for [React](http://facebook.github.io/react/). 
+React-dropdown-input displays a "combobox" for [React](http://facebook.github.io/react/).
 More explicitly, it shows a text input box; once the user starts to type, a dropdown menu
 opens with matching options.  The user can choose one of those options either by clicking one,
 or by using the arrow keys and hitting Enter.
 
-It is styled with bootstrap, using the [React-Bootstrap](http://react-bootstrap.github.io/) package; it actually displays a `ReactBootstrap.Input` element 
+It is styled with bootstrap, using the [React-Bootstrap](http://react-bootstrap.github.io/) package; it actually displays a `ReactBootstrap.Input` element
 with a `ReactBootstrap.DropdownMenu` of possible options.
 
 ## Demo
@@ -20,11 +22,11 @@ with a `ReactBootstrap.DropdownMenu` of possible options.
     npm install react-dropdown-input --save
 
 ## Sample Usage
- 
-    var searchNames = ['Sydney', 'Melbourne', 'Brisbane', 
+
+    var searchNames = ['Sydney', 'Melbourne', 'Brisbane',
         'Adelaide', 'Perth', 'Hobart'];
     //...
-    <DropdownInput 
+    <DropdownInput
         options={searchNames}
         defaultValue={this.props.initialValue}
         menuClassName='dropdown-input'

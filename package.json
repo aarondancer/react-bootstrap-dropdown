@@ -1,8 +1,8 @@
 {
-  "name": "react-dropdown-input",
-  "version": "0.1.11",
-  "description": "Displays a Bootstrap Input element with a DropdownMenu of possible options (similar to a combobox)",
-  "homepage": "http://racingtadpole.github.io/react-dropdown-input/",
+  "name": "react-bootstrap-dropdown",
+  "version": "0.1.0",
+  "description": "Dropdown button, list, or input for react-bootstrap",
+  "homepage": "http://aaron7pm.github.io/react-bootstrap-dropdown/",
   "main": "index.js",
   "dependencies": {
     "classnames": ">=1.1.4",
@@ -35,10 +35,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/RacingTadpole/react-dropdown-input.git"
+    "url": "https://github.com/aaron7pm/react-bootstrap-dropdown.git"
   },
   "bugs": {
-    "url": "https://github.com/RacingTadpole/react-dropdown-input/issues"
+    "url": "https://github.com/aaron7pm/react-bootstrap-dropdown/issues"
   },
   "keywords": [
     "react",
