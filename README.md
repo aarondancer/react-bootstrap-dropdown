@@ -1,6 +1,6 @@
 [![npm package](https://img.shields.io/npm/v/react-dropdown-input.svg?style=flat-square)](https://www.npmjs.org/package/react-dropdown-input)
 
-React-Dropdown-Input
+React-Bootstrap-Dropdown
 ====================
 
 React-dropdown-input displays a "combobox" for [React](http://facebook.github.io/react/). 
