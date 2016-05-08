@@ -1,9 +1,9 @@
-React-Dropdown-Input Example
+react-bootstrap-dropdown Example
 ============================
 
 See this live at:
 
-[http://racingtadpole.github.io/react-dropdown-input/example/](http://racingtadpole.github.io/react-dropdown-input/example/)
+[http://racingtadpole.github.io/react-bootstrap-dropdown/example/](http://racingtadpole.github.io/react-bootstrap-dropdown/example/)
 
 Or, clone this repo and build it from source with:
 

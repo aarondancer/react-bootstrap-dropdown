@@ -1,35 +1,36 @@
 {
   "name": "react-bootstrap-dropdown",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Dropdown button, list, or input for react-bootstrap",
   "homepage": "http://aaron7pm.github.io/react-bootstrap-dropdown/",
   "main": "index.js",
-  "dependencies": {
+  "peerDependencies": {
     "classnames": ">=1.1.4",
-    "react": ">=0.12",
-    "react-bootstrap": ">=0.18.0"
+    "react": ">=0.14",
+    "react-bootstrap": ">=0.27.0",
+    "react-dom": ">=0.14"
   },
   "devDependencies": {
     "babel": "^4.7.16",
     "babel-eslint": "^2.0.2",
-    "eslint": "^0.18.0",
-    "eslint-plugin-react": "^2.0.2",
-    "jest-cli": "0.2.1",
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb-base": "^3.0.0",
+    "eslint-plugin-import": "^1.7.0",
+    "eslint-plugin-react": "^5.0.1",
     "react-tools": "^0.13.1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/jest-preprocessor.js",
-    "unmockedModulePathPatterns": ["<rootDir>/node_modules/react"]
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react"
+    ]
   },
   "//": [
     "to run tests, I use node 0.10.x and jest-cli 0.2.1 as jest 0.4.0 doesn't work on my Mac OS with node v0.12.x",
     "but to build, I use node 0.12.x because babel won't run on node 0.10.x"
   ],
   "scripts": {
-    "build": "npm run lint && node_modules/.bin/babel src/DropdownInput.js > index.js",
-    "lint": "./node_modules/eslint/bin/eslint.js src/DropdownInput.js example/src/js/ChooseCity.js",
-    "test": "jest",
-    "test-debug": "node-debug --nodejs --harmony ./node_modules/jest-cli/bin/jest.js --runInBand"
+    "build": "node_modules/.bin/babel src/DropdownInput.js > index.js"
   },
   "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
   "license": "MIT",
@@ -49,6 +50,7 @@
     "autocomplete"
   ],
   "eslintConfig": {
+    "extends": "airbnb-base/legacy",
     "parser": "babel-eslint",
     "plugins": [
       "react"
@@ -61,25 +63,7 @@
       "browser": true
     },
     "rules": {
-      "react/display-name": 0,
-      "react/jsx-quotes": 1,
-      "react/jsx-no-undef": 1,
-      "react/jsx-sort-props": 0,
-      "react/jsx-uses-react": 1,
-      "react/jsx-uses-vars": 1,
-      "react/no-did-mount-set-state": 1,
-      "react/no-did-update-set-state": 1,
-      "react/no-multi-comp": 1,
-      "react/no-unknown-property": 1,
-      "react/prop-types": 2,
-      "react/react-in-jsx-scope": 1,
-      "react/self-closing-comp": 1,
-      "react/wrap-multilines": 1,
-      "quotes": [
-        1,
-        "single",
-        "avoid-escape"
-      ]
+      "func-names": 0
     }
   }
 }

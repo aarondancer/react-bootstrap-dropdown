@@ -8,16 +8,12 @@
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var React = require("react/addons");
-var ReactBootstrap = require("react-bootstrap");
-var joinClasses = require("react/lib/joinClasses");
+var React = require("react");
 var cx = require("classnames");
 
-var BootstrapMixin = ReactBootstrap.BootstrapMixin;
-var DropdownStateMixin = ReactBootstrap.DropdownStateMixin;
-var DropdownMenu = ReactBootstrap.DropdownMenu;
-var Input = ReactBootstrap.Input;
-var MenuItem = ReactBootstrap.MenuItem;
+var DropdownMenu = require("react-bootstrap/lib/DropdownMenu");
+var Input = require("react-bootstrap/lib/Input");
+var MenuItem = require("react-bootstrap/lib/MenuItem");
 
 var defaultMaxText = "+# more not shown";
 
@@ -32,7 +28,8 @@ var genLength = function genLength(list) {
 };
 
 var genGet = function genGet(list, i) {
-  // deal with both regular arrays and immutablejs objects, which have list.get(i) instead of list[i]
+  // deal with both regular arrays and immutablejs objects,
+  // which have list.get(i) instead of list[i]
   return typeof list.get !== "undefined" ? list.get(i) : list[i];
 };
 
@@ -45,8 +42,6 @@ var caseInsensIndexOf = function caseInsensIndexOf(list, str) {
 
 var DropdownInput = React.createClass({
   displayName: "DropdownInput",
-
-  mixins: [BootstrapMixin, DropdownStateMixin],
 
   propTypes: {
     pullRight: React.PropTypes.bool,
@@ -93,19 +88,20 @@ var DropdownInput = React.createClass({
       open: this.state.open,
       dropup: this.props.dropup
     };
-    // you can provide a filter prop, which is a function(filterText, optionName, optionIndex) which should
+    // you can provide a filter prop, which is a
+    // function(filterText, optionName, optionIndex) which should
     // return true to show option with the given name and index, given the input filterText.
     var filteredOptions = this.filteredOptions();
     var numFiltered = genLength(filteredOptions);
     var maxMenuItem = null;
     var maxText = typeof this.props.maxText === "undefined" ? defaultMaxText : this.props.maxText;
+    var dropdown = null;
     if (this.props.max && numFiltered > this.props.max) {
       // take an extra one off, to leave space for the maxText
       filteredOptions = filteredOptions.slice(0, this.props.max - 1);
       maxText = maxText.replace("#", numFiltered - this.props.max + 1);
       maxMenuItem = this.renderAsMenuItem(maxText, this.props.max, null, true);
     }
-    var dropdown = null;
     if (numFiltered > 0) {
       dropdown = React.createElement(
         DropdownMenu,
@@ -115,14 +111,15 @@ var DropdownInput = React.createClass({
           "aria-labelledby": this.props.id,
           pullRight: this.props.pullRight,
           key: 1,
-          onSelect: null },
+          onSelect: null
+        },
         filteredOptions.map(this.renderAsMenuItem),
         maxMenuItem
       );
     }
     return React.createElement(
       "div",
-      { className: joinClasses(this.props.className, cx(classes)) },
+      { className: cx(this.props.className, classes) },
       React.createElement(Input, _extends({}, this.props, {
         menuClassName: null,
         options: null,
@@ -138,18 +135,22 @@ var DropdownInput = React.createClass({
         onChange: this.handleInputChange,
         onKeyDown: this.handleKeyDown,
         dropup: null,
-        value: this.state.value })),
+        value: this.state.value
+      })),
       dropdown
     );
   },
 
   renderAsMenuItem: function renderAsMenuItem(item, index, options, disabled) {
-    var start = item.toLowerCase().indexOf(this.state.value.toLowerCase()),
-        end = start + this.state.value.length,
-        part1 = item.slice(0, start),
-        part2 = item.slice(start, end),
-        part3 = item.slice(end);
-    var classes = cx({ active: this.state.activeIndex === index, disabled: disabled === true });
+    var start = item.toLowerCase().indexOf(this.state.value.toLowerCase());
+    var end = start + this.state.value.length;
+    var part1 = item.slice(0, start);
+    var part2 = item.slice(start, end);
+    var part3 = item.slice(end);
+    var classes = cx({
+      active: this.state.activeIndex === index,
+      disabled: disabled === true
+    });
     if (disabled) {
       // don't highlight parts of disabled items, eg. the maxText
       part1 = item;
@@ -162,7 +163,8 @@ var DropdownInput = React.createClass({
         key: index,
         onSelect: this.handleOptionSelect.bind(this, index, item),
         className: classes,
-        onMouseEnter: this.handleMouseEnter.bind(this, index) },
+        onMouseEnter: this.handleMouseEnter.bind(this, index)
+      },
       part1,
       React.createElement(
         "b",
@@ -187,24 +189,29 @@ var DropdownInput = React.createClass({
     var numOptions = this.cappedLength(filteredOptions);
     var newName;
     switch (e.keyCode) {
-
       case 38:
         // up arrow
         if (this.state.activeIndex > 0) {
-          this.setState({ activeIndex: this.state.activeIndex - 1 });
+          this.setState({
+            activeIndex: this.state.activeIndex - 1
+          });
         } else {
-          this.setState({ activeIndex: numOptions - 1 });
+          this.setState({
+            activeIndex: numOptions - 1
+          });
         }
         break;
 
       case 40:
         // down arrow
-        this.setState({ activeIndex: (this.state.activeIndex + 1) % numOptions });
+        this.setState({
+          activeIndex: (this.state.activeIndex + 1) % numOptions
+        });
         break;
 
       case 13:
         // enter
-        var newIndex = caseInsensIndexOf(this.props.options, this.state.value); // may need this
+        var newIndex = caseInsensIndexOf(this.props.options, this.state.value); // eslint-disable-line
         if (this.state.open) {
           e.preventDefault();
         }
@@ -223,7 +230,8 @@ var DropdownInput = React.createClass({
         this.sendChange({ value: newName });
         this.setState({ value: newName, activeIndex: -1 });
         break;
-
+      default:
+        break;
     }
   },
 

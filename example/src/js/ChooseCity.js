@@ -1,6 +1,6 @@
 'use strict';
 var React = require('react');
-var DropdownInput = require('react-dropdown-input');
+var DropdownInput = require('react-bootstrap-dropdown');
 
 var ChooseCity =
   React.createClass({
