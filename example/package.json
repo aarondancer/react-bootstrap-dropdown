@@ -6,7 +6,7 @@
   "main": "index.html",
   "dependencies": {
     "react": ">=0.14",
-    "react-bootstrap": ">=0.18.0",
+    "react-bootstrap": ">=0.27.0",
     "react-bootstrap-dropdown": "../",
     "react-dom": ">=0.14"
   },
