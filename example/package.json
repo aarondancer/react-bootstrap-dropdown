@@ -8,21 +8,23 @@
     "react": ">=0.14",
     "react-bootstrap": ">=0.27.0",
     "react-bootstrap-dropdown": "../",
-    "react-dom": ">=0.14"
+    "react-dom": "^15.0.2"
   },
   "devDependencies": {
     "browserify": "^6.2.0",
     "reactify": "^0.15.2",
     "uglify-js": "^2.4.19"
   },
-  "scripts": {
-    "build": "browserify src/js/*.js | uglifyjs -cm > bundle.min.js",
-    "test": "echo 'No tests yet' && exit 1"
-  },
   "browserify": {
     "transform": [
       "reactify"
     ]
+  },
+  "scripts": {
+    "start": "npm run build &&  python -m SimpleHTTPServer",
+    "build": "browserify src/js/*.js | uglifyjs -cm > bundle.min.js",
+    "test": "echo 'No tests yet' && exit 1",
+    "update": "cd .. ; npm run build && cd example && rm -rf node_modules/react-bootstrap-dropdown/ && npm install && npm run build"
   },
   "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
   "license": "MIT",
@@ -35,9 +37,5 @@
     "combobox",
     "autocomplete",
     "example"
-  ],
-  "//": [
-    "to manually rebuild after a change in the react-bootstrap-dropdown module, you can use:",
-    "cd .. ; npm run build && cd example && rm -rf node_modules/react-bootstrap-dropdown/ && npm install && npm run build"
   ]
 }

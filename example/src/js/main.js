@@ -4,6 +4,7 @@
 'use strict';
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 var ChooseCity = require('./ChooseCity');
 
 var names = [
@@ -54,7 +55,7 @@ var names = [
   'Devonport'
 ].sort();
 
-React.render(
+ReactDOM.render(
   <div className='container'>
     <div className='row'>
       <div className='col-md-6 col-md-offset-3'>
