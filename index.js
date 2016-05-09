@@ -94,7 +94,7 @@ var DropdownInput = React.createClass({
           key: 1,
           style: {
             maxHeight: this.props.maxHeight || "200px",
-            listWidth: this.props.width || "auto",
+            width: this.props.listWidth || "auto",
             overflowY: "scroll"
           }
         },
