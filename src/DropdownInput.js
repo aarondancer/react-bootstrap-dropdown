@@ -107,7 +107,6 @@ var DropdownInput = React.createClass({
           type="text"
           bsSize={this.props.bsSize}
           ref="dropdownInput"
-          onClick={this.handleDropdownClick}
           onFocus={() => this.setDropdownState(true)}
           onBlur={() => this.setDropdownState(false)}
           key={0}

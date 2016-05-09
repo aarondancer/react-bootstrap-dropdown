@@ -110,7 +110,6 @@ var DropdownInput = React.createClass({
         type: "text",
         bsSize: this.props.bsSize,
         ref: "dropdownInput",
-        onClick: this.handleDropdownClick,
         onFocus: function () {
           return _this.setDropdownState(true);
         },
