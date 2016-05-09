@@ -32,7 +32,8 @@ var ChooseCity =
             defaultValue={this.props.lookupText}
             placeholder='Choose a city...'
             options={this.props.options}
-            max={12}
+            maxHeight={'200px'}
+            listWidth={'100%'}
           />
           <br />
           <div className='pull-right' style={{height: 30, paddingBottom: 80}}>{this.state.cityText}</div>

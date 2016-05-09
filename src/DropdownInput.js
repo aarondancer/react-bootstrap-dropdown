@@ -50,6 +50,8 @@ var DropdownInput = React.createClass({
     navItem: React.PropTypes.bool,
     options: React.PropTypes.oneOfType([React.PropTypes.object, React.PropTypes.array]).isRequired,
     filter: React.PropTypes.func,
+    maxHeight: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
+    listWidth: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]),
     // the rest are to make eslint happy
     id: React.PropTypes.string,
     className: React.PropTypes.string,
@@ -88,7 +90,11 @@ var DropdownInput = React.createClass({
           aria-labelledby={this.props.id}
           pullRight={this.props.pullRight}
           key={1}
-          onSelect={null}
+          style={{
+            maxHeight: this.props.maxHeight || '200px',
+            listWidth: this.props.width || 'auto',
+            'overflow-y': 'scroll'
+          }}
         >
           {filteredOptions.map(this.renderAsMenuItem)}
         </DropdownMenu>
@@ -102,6 +108,8 @@ var DropdownInput = React.createClass({
           bsSize={this.props.bsSize}
           ref="dropdownInput"
           onClick={this.handleDropdownClick}
+          onFocus={() => this.setDropdownState(true)}
+          onBlur={() => this.setDropdownState(false)}
           key={0}
           navDropdown={this.props.navItem}
           onChange={this.handleInputChange}
