@@ -10,7 +10,7 @@ var React = require('react');
 var cx = require('classnames');
 
 var DropdownMenu = require('react-bootstrap/lib/DropdownMenu');
-var Input = require('react-bootstrap/lib/Input');
+var FormControl = require('react-bootstrap/lib/FormControl');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
 
 var defaultMaxText = '+# more not shown';
@@ -120,22 +120,16 @@ var DropdownInput = React.createClass({
     }
     return (
       <div className={cx(this.props.className, classes)}>
-        <Input
+        <FormControl
           {...this.props}
-          menuClassName={null}
-          options={null}
           type="text"
           bsSize={this.props.bsSize}
           ref="dropdownInput"
           onClick={this.handleDropdownClick}
           key={0}
           navDropdown={this.props.navItem}
-          navItem={null}
-          pullRight={null}
-          onSelect={null}
           onChange={this.handleInputChange}
           onKeyDown={this.handleKeyDown}
-          dropup={null}
           value={this.state.value}
           />
           {dropdown}
@@ -245,6 +239,10 @@ var DropdownInput = React.createClass({
     this.sendSelect({ value: name, index: this.state.activeIndex });
     this.sendChange({ value: name });
     this.setState({ value: name, activeIndex: -1 });
+  },
+
+  setDropdownState: function (state) {
+    this.setState({ open: state });
   },
 
   sendChange: function (e) {
