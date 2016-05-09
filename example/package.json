@@ -21,10 +21,12 @@
     ]
   },
   "scripts": {
-    "start": "npm run build &&  python -m SimpleHTTPServer",
+    "start": "npm run build && python -m SimpleHTTPServer",
+    "server": "python -m SimpleHTTPServer",
     "build": "browserify src/js/*.js | uglifyjs -cm > bundle.min.js",
     "test": "echo 'No tests yet' && exit 1",
-    "update": "cd .. ; npm run build && cd example && rm -rf node_modules/react-bootstrap-dropdown/ && npm install && npm run build"
+    "update": "cd .. ; npm run build && cd example && rm -rf node_modules/react-bootstrap-dropdown/ && npm install && npm run build",
+    "restart": "npm run update && npm run server"
   },
   "author": "Arthur Street <arthur@racingtadpole.com> (http://racingtadpole.com/)",
   "license": "MIT",

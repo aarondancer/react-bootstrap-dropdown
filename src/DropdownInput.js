@@ -13,8 +13,6 @@ var DropdownMenu = require('react-bootstrap/lib/DropdownMenu');
 var FormControl = require('react-bootstrap/lib/FormControl');
 var MenuItem = require('react-bootstrap/lib/MenuItem');
 
-var defaultMaxText = '+# more not shown';
-
 var defaultFilter = function (filterText, optionName) { // also optionIndex as third arg
   return (optionName.toLowerCase().indexOf(filterText.toLowerCase()) >= 0);
 };
@@ -47,8 +45,6 @@ var DropdownInput = React.createClass({
     dropup: React.PropTypes.bool,
     defaultValue: React.PropTypes.string,
     menuClassName: React.PropTypes.string,
-    max: React.PropTypes.number,
-    maxText: React.PropTypes.string,
     onChange: React.PropTypes.func,
     onSelect: React.PropTypes.func,
     navItem: React.PropTypes.bool,
@@ -72,15 +68,6 @@ var DropdownInput = React.createClass({
     return this.props.options.filter(filter.bind(undefined, this.state.value));
   },
 
-  cappedLength: function (options) {
-    var total = genLength(options);
-    if (total > this.props.max) {
-      // if it exceeded the max, we took an extra one off
-      total = this.props.max - 1;
-    }
-    return total;
-  },
-
   render: function () {
     var classes = {
       dropdown: true,
@@ -92,17 +79,7 @@ var DropdownInput = React.createClass({
     // return true to show option with the given name and index, given the input filterText.
     var filteredOptions = this.filteredOptions();
     var numFiltered = genLength(filteredOptions);
-    var maxMenuItem = null;
-    var maxText = typeof this.props.maxText === 'undefined'
-      ? defaultMaxText
-      : this.props.maxText;
     var dropdown = null;
-    if (this.props.max && numFiltered > this.props.max) {
-      // take an extra one off, to leave space for the maxText
-      filteredOptions = filteredOptions.slice(0, this.props.max - 1);
-      maxText = maxText.replace('#', (numFiltered - this.props.max + 1));
-      maxMenuItem = this.renderAsMenuItem(maxText, this.props.max, null, true);
-    }
     if (numFiltered > 0) {
       dropdown = (
         <DropdownMenu
@@ -114,7 +91,6 @@ var DropdownInput = React.createClass({
           onSelect={null}
         >
           {filteredOptions.map(this.renderAsMenuItem)}
-          {maxMenuItem}
         </DropdownMenu>
       );
     }
@@ -148,7 +124,7 @@ var DropdownInput = React.createClass({
       disabled: disabled === true
     });
     if (disabled) {
-      // don't highlight parts of disabled items, eg. the maxText
+      // don't highlight parts of disabled items
       part1 = item;
       part2 = null;
       part3 = null;
@@ -176,7 +152,7 @@ var DropdownInput = React.createClass({
   handleKeyDown: function (e) {
     // catch arrow keys and the Enter key
     var filteredOptions = this.filteredOptions();
-    var numOptions = this.cappedLength(filteredOptions);
+    var numOptions = this.genLength(filteredOptions);
     var newName;
     switch (e.keyCode) {
       case 38: // up arrow
@@ -256,7 +232,6 @@ var DropdownInput = React.createClass({
       this.props.onSelect(e);
     }
   }
-
 });
 
 module.exports = DropdownInput;
