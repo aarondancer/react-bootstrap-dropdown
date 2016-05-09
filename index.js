@@ -72,8 +72,6 @@ var DropdownInput = React.createClass({
   },
 
   render: function render() {
-    var _this = this;
-
     var classes = {
       dropdown: true,
       open: this.state.open,
@@ -97,7 +95,7 @@ var DropdownInput = React.createClass({
           style: {
             maxHeight: this.props.maxHeight || "200px",
             listWidth: this.props.width || "auto",
-            "overflow-y": "scroll"
+            overflowY: "scroll"
           }
         },
         filteredOptions.map(this.renderAsMenuItem)
@@ -110,12 +108,8 @@ var DropdownInput = React.createClass({
         type: "text",
         bsSize: this.props.bsSize,
         ref: "dropdownInput",
-        onFocus: function () {
-          return _this.setDropdownState(true);
-        },
-        onBlur: function () {
-          return _this.setDropdownState(false);
-        },
+        onFocus: this.setDropdownState.bind(this, true),
+        onBlur: this.setDropdownState.bind(this, false),
         key: 0,
         navDropdown: this.props.navItem,
         onChange: this.handleInputChange,
